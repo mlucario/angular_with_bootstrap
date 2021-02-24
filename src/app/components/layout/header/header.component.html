@@ -1,1 +1,96 @@
-<p>header works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-center">
+      <p class="text-blue m-0">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae amet
+        enim iure nesciunt harum, quibusdam placeat vero obcaecati ipsa
+        praesentium alias laborum. Nam, ipsa reprehenderit quos repellendus sed
+        est impedit?
+      </p>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a [routerLink]="['']">
+      <i class="fa fa-comment text-white fa-2x me-2"></i
+    ></a>
+    <a class="navbar-brand" [routerLink]="['']">mLucario</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="['/manager/dashboard']"
+            [routerLinkActive]="['active']"
+            >Dashboard</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/manager/profile']"
+            [routerLinkActive]="['active']"
+            >Profile</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            [routerLink]="['angular_practice']"
+            [routerLinkActive]="['active']"
+          >
+            Angular Practice
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      
+      </ul>
+      <!-- <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-light">Sign In</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-orange text-white">
+            Sign Up
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-danger text-white">
+            Sign Out
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
