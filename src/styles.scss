@@ -1,6 +1,12 @@
 @import "styles/modules/fonts";
+@import "styles/modules/colors";
+
+
 
 /* You can add global styles to this file, and also import other style files */
+
+
+
 // primary font
 $primary_font: 'Roboto';
 // $primary_font: 'JetBrains Mono';
@@ -24,17 +30,11 @@ $footer-height : 300px;
 
 body,html {
     font-family: $primary_font;
-
 }
 
 main {
     margin-bottom: 1px;
     min-height: calc(100vh - 350px); 
 }
-footer {    
-    height: 150px;
-    color: whitel;
-    background-color: black;
-}
-  
+
   

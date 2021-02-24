@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  userID: string = '1234';
   constructor() { }
 
   ngOnInit(): void {
+    console.log("HeaderComponent init");
   }
 
 }

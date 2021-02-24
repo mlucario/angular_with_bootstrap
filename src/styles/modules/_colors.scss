@@ -1,0 +1,48 @@
+/* import only the necessary Bootstrap files */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+/* -------begin customization-------- */
+/* change the primary theme color to red */
+$theme-colors: (
+  "primary": #1266f1,
+  "secondary": #b23cfd,
+  "success": #00b74a,
+  "info": #39c0ed,
+  "warning": #ffa900,
+  "danger": #f93154,
+  "light": #fbfbfb,
+  "dark": #262626,
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple-500,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-800,
+);
+$enable-gradients: true;
+// $colors: (
+//   "blue":       $blue,
+//   "indigo":     $indigo,
+//   "purple":     $purple-500,
+//   "pink":       $pink,
+//   "red":        $red,
+//   "orange":     $orange,
+//   "yellow":     $yellow,
+//   "green":      $green,
+//   "teal":       $teal,
+//   "cyan":       $cyan,
+//   "white":      $white,
+//   "gray":       $gray-600,
+//   "gray-dark":  $gray-800
+// );
+
+/* -------end customization-------- */
+/* finally, import Bootstrap to set the changes! */
+@import "~bootstrap";
