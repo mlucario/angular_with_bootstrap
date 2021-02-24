@@ -17,30 +17,24 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'account',
+    path: 'profile',
     component: ProfileComponent,
-    children: [     
-      {
-        path: 'signin',
-        component: SigninComponent,
-      },
-      {
-        path: 'signup',
-        component: SignupComponent,
-      },
-      {
-        path: 'signout',
-        component: SignOutComponent,
-      },
-      {
-        path: ':id',
-        component: ProfileComponent,
-      }
-    ]
+  },
+  {
+    path: 'signin',
+    component: SigninComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+  {
+    path: 'signout',
+    component: SignOutComponent,
   }
 ];
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
 export class AppRoutingModule { }
