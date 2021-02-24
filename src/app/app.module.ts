@@ -8,12 +8,22 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 
 // * LOADING
 import { LoadingComponent } from './components/commons/loading/loading.component';
+import { DashboardComponent } from './components/manager/dashboard/dashboard.component';
+import { ProfileComponent } from './components/account/profile/profile.component';
+import { SigninComponent } from './components/account/signin/signin.component';
+import { SignupComponent } from './components/account/signup/signup.component';
+import { SignOutComponent } from './components/account/sign-out/sign-out.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    DashboardComponent,
+    ProfileComponent,
+    SigninComponent,
+    SignupComponent,
+    SignOutComponent
   ],
   imports: [
     BrowserModule,

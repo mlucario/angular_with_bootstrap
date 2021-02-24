@@ -13,9 +13,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a [routerLink]="['']">
-      <i class="fa fa-comment text-white fa-2x me-2"></i
-    ></a>
-    <a class="navbar-brand" [routerLink]="['']">mLucario</a>
+      <i class="fa fa-comment text-white fa-2x me-2"></i>
+      <span class="navbar-brand">mLucario</span></a
+    >
+
     <button
       class="navbar-toggler"
       type="button"
@@ -29,24 +30,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            [routerLink]="['/manager/dashboard']"
-            [routerLinkActive]="['active']"
-            >Dashboard</a
-          >
-        </li>
-        <li class="nav-item">
+        <li class="nav-item me-2">
           <a
             class="nav-link"
-            [routerLink]="['/manager/profile']"
+            aria-current="page"
+            [routerLink]="['manager/dashboard']"
             [routerLinkActive]="['active']"
-            >Profile</a
+            ><img
+              src="assets/images/icons/icons8_dashboard_layout_32.png"
+              alt="Dashboard"
+            />
+            Dashboard</a
           >
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item me-2">
+          <a
+            class="nav-link"
+            [routerLink]="['account/' + userID]"
+            [routerLinkActive]="['active']"
+          >
+            <img
+              src="assets/images/icons/icons8_profile_32.png"
+              alt="Profile"
+            />
+            Profile</a
+          >
+        </li>
+        <li class="nav-item dropdown me-2">
           <a
             class="nav-link dropdown-toggle"
             id="navbarDropdown"
@@ -55,7 +65,10 @@
             aria-expanded="false"
             [routerLink]="['angular_practice']"
             [routerLinkActive]="['active']"
-          >
+            ><img
+              src="assets/images/icons/icons8_angularjs_32.png"
+              alt="angular"
+            />
             Angular Practice
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -65,7 +78,6 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-      
       </ul>
       <!-- <form class="d-flex">
         <input
@@ -76,19 +88,42 @@
         />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form> -->
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 leftSide">
         <li class="nav-item">
-          <button type="button" class="btn btn-outline-light">Sign In</button>
+          <a
+            type="button"
+            class="btn btn-outline-light text-white"
+            [routerLink]="['account/signin']"
+            style="width: 130px"
+          >
+            <img src="assets/images/icons/icons8_enter_32.png" alt="signin" />
+            Sign In</a
+          >
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-orange text-white">
+          <a
+            type="button"
+            class="btn btn-orange text-white"
+            [routerLink]="['account/signup']"
+            style="width: 130px"
+            ><img
+              src="assets/images/icons/icons8_add_user_male_32.png"
+              alt="signup"
+            />
             Sign Up
-          </button>
+          </a>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-danger text-white">
+          <a
+            type="button"
+            class="btn btn-danger text-white"
+            [routerLink]="['account/signout']"
+            ><img
+              src="assets/images/icons/icons8_shutdown_32.png"
+              alt="signout"
+            />
             Sign Out
-          </button>
+          </a>
         </li>
       </ul>
     </div>
