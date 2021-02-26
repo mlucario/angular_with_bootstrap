@@ -68,7 +68,7 @@ validateRoles = check('role')
     .withMessage('Email is missing.')
     .bail()      
     .trim()
-    .matches(/^(A-Za-z)$/)
+    .matches(/^[A-Za-z]+$/)
     .withMessage('Email is invalid.')
     .bail() 
     .custom((role) => {
