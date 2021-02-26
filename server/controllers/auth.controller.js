@@ -86,7 +86,106 @@ const signup = (req, res) => {
     }
 };
 
-const generateId = () => random(2, 100000);
+
+
+exports.login = (req, res) => {
+    const errors = validationResult(req);
+    try {
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          status: false,
+          messages: errors.array().map((aAessage) => aAessage.msg),
+        });
+      } else {
+        const { username, password } = req.body;
+        User.findOne({
+          username,
+        })
+          .populate('roles', '-__v')
+          .exec((err, user) => {
+            if (err) {
+              return res.status(500).json({ status: false, message: err });
+            }
+  
+            if (!user) {
+              return res.status(404).send({
+                status: false,
+                accessToken: null,
+                message: 'User Not found.',
+              });
+            }
+  
+            // Check password
+            const userPassword = user.password;
+  
+            bcrypt.compare(password, userPassword, (err, isMatch) => {
+              if (err) {
+                return res.status(500).json({ status: false, message: err });
+              }
+  
+              if (isMatch) {
+                // NOTE JWT : payload.header.signature
+  
+                // STEP 1 : Create Payload
+                const payload = {
+                  id: user._id,
+                  username: user.username,
+                  email: user.email,
+                };
+                // Add authentication JWT here
+                jwt.sign(
+                  payload,
+                  db.SECRET_KEY,
+                  {
+                    expiresIn: 3600,
+                  },
+  
+                  (err, token) => {
+                    if (err) {
+                      return res.status(404).json({
+                        status: false,
+                        accessToken: null,
+                        message: 'Fail to create token',
+                        error: err,
+                      });
+                    }
+                    if (token) {
+                      var authorities = [];
+                      for (let i = 0; i < user.roles.length; i++) {
+                        authorities.push(
+                          'ROLE_' + user.roles[i].name.toUpperCase()
+                        );
+                      }
+  
+                      return res.status(200).send({
+                        id: user._id,
+                        roles: authorities,
+                        accessToken: token,
+                      });
+                    }
+                  }
+                );
+              } else {
+                return res.status(404).json({
+                  status: false,
+                  accessToken: null,
+                  message: 'Password is incorrected',
+                });
+              }
+            });
+          });
+      }
+    } catch (error) {
+      // ! Error 503 Service Unavailable
+      return res.status(503).json({
+        status: false,
+        messages: 'Service unavaiable get weather errors',
+        errorMessage: error.message,
+      });
+    }
+  };
+
+  
 
 module.exports = {
     signUp: signup,
