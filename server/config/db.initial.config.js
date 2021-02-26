@@ -41,7 +41,7 @@ const ROLES_LIST = [
    'admin'
 ]
 
-const ROLES = [
+const ROLES_DB = [
     [
         'employee',
         'employee',
@@ -75,7 +75,7 @@ const add_administrator_account = () => {
 }
 
 const add_roles_to_table = () => {
-    dbConn.query("INSERT INTO TBL_ROLES (role,role_description,role_privileges) VALUES  ?", [ROLES], function (err, res) {
+    dbConn.query("INSERT INTO TBL_ROLES (role,role_description,role_privileges) VALUES  ?", [ROLES_DB], function (err, res) {
         if (err) {
             printError("db.initial.config.js Create Admin account error: ", err);
             throw err;
@@ -130,7 +130,7 @@ const create_tbl_roles_table = () => {
                     throw err;
                 }
 
-                if (results.length !== ROLES.length) {
+                if (results.length !== ROLES_DB.length) {
                     add_roles_to_table();
                 } else {
                     printLog("Roles account added");
@@ -148,6 +148,7 @@ const create_tbl_roles_table = () => {
 const db = {
     CREATE_USERS_TABLE: create_tbl_users_table,
     CREATE_ROLES_TABLE: create_tbl_roles_table,
-    ROLES_LIST
+    ROLES_LIST,
+    ROLES_DB
 };
 module.exports = db;

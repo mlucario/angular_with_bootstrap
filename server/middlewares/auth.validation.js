@@ -2,7 +2,7 @@ const { check } = require('express-validator');
 const dbConn = require('../config/mysql.config');
 const { ROLES_LIST } = require('../config/db.initial.config');
 
-validateEmail = check('username')
+validateEmailSignUp = check('username')
     .trim()
     // * Check if email is null or empty
     .exists(
@@ -24,6 +24,24 @@ validateEmail = check('username')
             throw new Error('Email is already exists!!!');
         }
     }).withMessage('Invalid email address!!!');
+
+    validateEmailSignIn = check('username')
+    .trim()
+    // * Check if email is null or empty
+    .exists(
+        {
+            checkFalsy: true,
+            checkNull: true
+        }
+    )
+    // * Return message if fail validate
+    .withMessage('Email is missing')
+    .bail() // * will stop and throw error
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Email is invalid')
+    .bail() // throw error when email is invalid
+  
 
 
 validatePassword = check('password')
@@ -96,7 +114,8 @@ const isEmailInUse = (email) => {
     })
 };
 const validateAuth = {
-    validateEmail,
+    validateEmailSignUp,
+    validateEmailSignIn,
     validateRoles,
     validatePassword,
     validateConfirmPassword

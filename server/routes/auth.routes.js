@@ -1,14 +1,26 @@
-const { check } = require('express-validator');
-const { signUp } = require('../controllers/auth.controller');
-const express = require('express')
+const { check } = require("express-validator");
+const { signUp, signIn } = require("../controllers/auth.controller");
+const express = require("express");
 const router = express.Router();
 const {
-    validateEmail, validateRoles, validatePassword,
-    validateConfirmPassword
-} = require('../middlewares/auth.validation');
+  validateEmailSignUp,
+  validateEmailSignIn,
+  validateRoles,
+  validatePassword,
+  validateConfirmPassword,
+} = require("../middlewares/auth.validation");
 
+router.post(
+  "/signup",
+  [
+    validateEmailSignUp,
+    validatePassword,
+    validateConfirmPassword,
+    validateRoles,
+  ],
+  signUp
+);
 
-router.post('/signup', [validateEmail, validatePassword,
-    validateConfirmPassword, validateRoles,], signUp);
+router.post("/signin", [validateEmailSignIn, validatePassword], signIn);
 
-module.exports = router
+module.exports = router;
