@@ -1,7 +1,10 @@
-const { check } = require("express-validator");
+
 const { signUp, signIn } = require("../controllers/auth.controller");
 const express = require("express");
 const router = express.Router();
+// * GET LITTMITER
+const limiter = require('../middlewares/limiter.config');
+
 const {
   validateEmailSignUp,
   validateEmailSignIn,
@@ -17,6 +20,7 @@ router.post(
     validatePassword,
     validateConfirmPassword,
     validateRoles,
+    limiter.createAccountLimiter
   ],
   signUp
 );

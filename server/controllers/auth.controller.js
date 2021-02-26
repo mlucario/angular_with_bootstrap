@@ -31,6 +31,7 @@ const signUp = (req, res) => {
   try {
     // NOTE errors will be array as express-validator implements
     if (!errors.isEmpty()) {
+      console.log(errors);
       // NOTE FORMAT OF ERROR
       // * [{"value":"","msg":"Email is missing","param":"username","location":"body"}]
       return res.status(400).json({

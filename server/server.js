@@ -12,8 +12,12 @@ const { printError, printLog } = require('./utils/log');
 // NOTE dotenv is required to read .env file
 const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.PORT || 3000;
 
+// * GET LITTMITER
+const limiter = require('./middlewares/limiter.config');
+
+
+const PORT = process.env.PORT || 3000;
 
 // CREATE express
 const app = express();
@@ -33,10 +37,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
+// * GENERATE DATABASE
 db.CREATE_USERS_TABLE();
 db.CREATE_ROLES_TABLE();
-
 
 
 
