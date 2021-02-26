@@ -1,1 +1,100 @@
-<p>signin works!</p>
+<div class="container-md">
+  <div class="row align-items-lg-center vh-100">
+    <div class="col-md-12 col-lg-2 d-none d-lg-block"></div>
+    <div class="col-md-12 col-lg-8">
+      <div class="row mt-5 mt-lg-0">
+        <div class="col-12">
+          <div class="card">
+            <!-- <h5 class="card-header">Featured</h5> -->
+            <div class="card-body m-0 p-md-2 p-lg-0 shadow-sm bg-body rounded">
+              <div class="row">
+                <div class="col-lg-3 d-none d-lg-block" id="leftPanel"></div>
+                <div class="col-12 col-lg-9 py-sm-2 py-md-5">
+                  <div class="card-title">
+                    <p class="fw-thin h3 text-primary">
+                      <span class="fw-bolder text-secondary">M</span>Lucario
+                    </p>
+                    <p class="font-monospace">
+                      Welcome back! Sign in to your account.
+                    </p>
+                  </div>
+                  <div class="card-text">
+                    <!-- Sign in Form Here -->
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-12">
+                        <label for="email" class="form-label"
+                          >Email address</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          placeholder="Email"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <label for="password" class="form-label"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="password"
+                          placeholder="Password"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          Please choose a password.
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="invalidCheck"
+                            required
+                          />
+                          <label class="form-check-label" for="invalidCheck">
+                            Remember me
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-primary" type="button">
+                          Sign In
+                        </button>
+                      </div>
+                      <div class="col-12 px-5 text-center">
+                        <hr />
+                        Not a user?
+                        <a
+                          [routerLink]="['signup']" class=" text-decoration-none"
+                          ><span class="text-primary">Sign Up</span></a
+                        >
+                        <!-- <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary mx-2">Left</button>
+                        <button type="button" class="btn btn-primary mx-2">Middle</button>
+                        <button type="button" class="btn btn-primary mx-2">Right</button>
+                      </div> -->
+                      </div>
+                    </form>
+
+                    <!-- END Sign Up Form -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-2"></div>
+    </div>
+  </div>
+</div>
