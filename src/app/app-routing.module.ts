@@ -5,6 +5,7 @@ import { SignOutComponent } from './components/account/sign-out/sign-out.compone
 import { SigninComponent } from './components/account/signin/signin.component';
 import { SignupComponent } from './components/account/signup/signup.component';
 import { DashboardComponent } from './components/manager/dashboard/dashboard.component';
+import { CanActivateWithRolesGuard } from './guards/guardswithroles.guard';
 
 const routes: Routes = [
   {
@@ -15,10 +16,18 @@ const routes: Routes = [
   {
     path: 'manager/dashboard',
     component: DashboardComponent,
+    data: {
+      expectedRole: 'admin'
+    },
+    canActivate: [CanActivateWithRolesGuard],
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    data: {
+      expectedRole: 'employee'
+    },
+    canActivate: [CanActivateWithRolesGuard]
   },
   {
     path: 'signin',

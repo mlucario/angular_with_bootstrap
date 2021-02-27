@@ -20,20 +20,25 @@
                   </div>
                   <div class="card-text">
                     <!-- Sign in Form Here -->
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" novalidate (ngSubmit)="signIn()">
                       <div class="col-md-12">
                         <label for="email" class="form-label"
                           >Email address</label
                         >
                         <input
                           type="email"
-                          class="form-control"
-                          id="email"
-                          placeholder="Email"
+                          id="username"
+                          [ngClass]="{
+                            'form-control form-control': true,
+                            'is-invalid': errors.username != undefined
+                          }"
+                          name="username"
+                          [(ngModel)]="signInAccount.username"
+                          placeholder="Enter Email"
                           required
                         />
                         <div class="invalid-feedback">
-                          Please choose a username.
+                          {{ errors.fullName }}
                         </div>
                       </div>
 
@@ -43,33 +48,42 @@
                         >
                         <input
                           type="password"
-                          class="form-control"
                           id="password"
-                          placeholder="Password"
+                          [ngClass]="{
+                            'form-control form-control': true,
+                            'is-invalid': errors.password != undefined
+                          }"
+                          name="password"
+                          [(ngModel)]="signInAccount.password"
+                          #password="ngModel"
+                          placeholder="Enter Password"
                           required
                         />
                         <div class="invalid-feedback">
-                          Please choose a password.
+                          {{ errors.password }}
                         </div>
                       </div>
                       <div class="col-12">
                         <div class="form-check">
                           <input
                             class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="invalidCheck"
-                            required
+                            type="checkbox"                           
+                            id="rememberMe"
+                            [(ngModel)] = "rememberMe"   
+                            name="rememberMe"                 
                           />
-                          <label class="form-check-label" for="invalidCheck">
+                          <label class="form-check-label" for="rememberMe">
                             Remember me
                           </label>
                         </div>
                       </div>
                       <div class="col-12">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="submit">
                           Sign In
                         </button>
+                      </div>
+                      <div class="col-12 text-center">
+                        <small class="text-danger">{{errorMessage}}</small>
                       </div>
                       <div class="col-12 px-5 text-center">
                         <hr />

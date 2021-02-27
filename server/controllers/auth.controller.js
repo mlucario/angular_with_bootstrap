@@ -173,6 +173,7 @@ const signIn = (req, res) => {
                     return res.status(200).json({
                       id,
                       username,
+                      role: roles,
                       role_privileges: authorities,
                       accessToken: token,
                     });

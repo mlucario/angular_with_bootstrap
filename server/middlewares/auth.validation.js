@@ -12,7 +12,7 @@ validateEmailSignUp = check('username')
         }
     )
     // * Return message if fail validate
-    .withMessage('Email is missing')
+    .withMessage('Username is missing')
     .bail() // * will stop and throw error
     .isEmail()
     .normalizeEmail()
@@ -21,7 +21,7 @@ validateEmailSignUp = check('username')
     .custom(async email => {
         const value = await isEmailInUse(email);
         if (value) {
-            throw new Error('Email is already exists!!!');
+            throw new Error('Username is already exists!!!');
         }
     }).withMessage('Invalid email address!!!');
 
@@ -83,11 +83,11 @@ validateConfirmPassword = check('confirm_password')
     });
 validateRoles = check('role')       
     .notEmpty()
-    .withMessage('Email is missing.')
+    .withMessage('Role is missing.')
     .bail()      
     .trim()
     .matches(/^[A-Za-z]+$/)
-    .withMessage('Email is invalid.')
+    .withMessage('Role is invalid.')
     .bail() 
     .custom((role) => {
 
