@@ -1,0 +1,23 @@
+import { FormGroup } from '@angular/forms';
+
+// custom validator to check that two fields match
+
+export function IsPasswordsMatched(controlName: string, machingControlName: string): any {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+
+    const matchingControl = formGroup.controls[machingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+      return ;
+    }
+
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({
+        mustMatch: true,
+      });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  };
+}

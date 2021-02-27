@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
@@ -21,8 +23,9 @@ import { AccountModule } from './components/account/account.module';
     
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     FormsModule,
+    HttpClientModule,    
     AccountModule,
     AppRoutingModule
   ],

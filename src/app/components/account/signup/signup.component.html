@@ -1,5 +1,6 @@
-<div class="container-md">
-  <div class="row align-items-lg-center vh-100">
+
+<div class="container-md mt-xl-5">
+  <div class="row align-items-lg-center">
     <div class="col-md-12 col-lg-2 d-none d-lg-block"></div>
     <div class="col-md-12 col-lg-8">
       <div class="row mt-5 mt-lg-0">
@@ -17,63 +18,193 @@
                     <p class="font-monospace">Create a free account.</p>
                   </div>
                   <div class="card-text">
-                   <!-- Sign Up Form Here -->
-                   <form class="row g-3 needs-validation" novalidate>
-                    <div class="col-md-12">
-                      <label for="email" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="email" placeholder="Email" required>                        
-                      <div class="invalid-feedback">
-                        Please choose a username.
-                      </div>
-                    </div>
-                    
-                    <div class="col-md-12">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password" required>                        
-                      <div class="invalid-feedback">
-                        Please choose a password.
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <label for="password2" class="form-label">Confirm Password</label>
-                      <input type="password" class="form-control" id="password2" placeholder="Confirm Password" required>                        
-                      <div class="invalid-feedback">
-                        Please choose a Confirm Password.
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                          Agree to terms and conditions
-                        </label>
+                    <!-- Sign Up Form Here -->
+                    <form
+                      class="row g-3 needs-validation"
+                      novalidate
+                      [formGroup]="signUpForm"
+                      (ngSubmit)="onSubmit()"
+                    >
+                      <!-- EMAIL -->
+                      <div class="col-md-12">
+                        <label for="email" class="form-label"
+                          >Email address</label
+                        >
+                        <input
+                          type="email"
+                          id="email"
+                          formControlName="email"
+                          [ngClass]="{
+                            'form-control': true,
+                            'is-invalid':
+                              (f.email.touched || isSubmitted) &&
+                              f.email.errors,
+                            'is-valid': isSubmitted && f.email.errors === null
+                          }"
+                          placeholder="Email"
+                          required
+                        />
                         <div class="invalid-feedback">
-                          You must agree before submitting.
+                          <span *ngIf="f.email.errors?.required">{{
+                            emailRequire
+                          }}</span>
+                          <span *ngIf="f.email.errors?.email">{{
+                            emailPattern
+                          }}</span>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary" type="button">Sign Up</button>
-                    </div>
-                    <div class="col-12 px-5 text-center">
-                      <hr>
-                      Already a user? <span class="text-primary">Sign In</span>
-                      <!-- <div class="btn-group" role="group">
+
+                      <!-- PASSWORD -->
+                      <div class="col-md-12">
+                        <label for="password" class="form-label"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          id="password"
+                          formControlName="password"
+                          [ngClass]="{
+                            'form-control': true,
+                            'is-invalid':
+                              (f.password.touched || isSubmitted) &&
+                              f.password.errors,
+                            'is-valid':
+                              isSubmitted && f.password.errors === null
+                          }"
+                          placeholder="Password"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          <span *ngIf="f.password.errors?.required">{{
+                            passwordRequire
+                          }}</span>
+                          <span *ngIf="f.password.errors?.pattern">{{
+                            passwordPattern
+                          }}</span>
+                          <span *ngIf="f.password.errors?.minlength">{{
+                            passwordMinLenght
+                          }}</span>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <label for="passwordConfirm" class="form-label"
+                          >Confirm Password</label
+                        >
+                        <input
+                          type="password"
+                          id="passwordConfirm"
+                          formControlName="passwordConfirm"
+                          [ngClass]="{
+                            'form-control': true,
+                            'is-invalid':
+                              (f.passwordConfirm.touched || isSubmitted) &&
+                              f.passwordConfirm.errors,
+                            'is-valid':
+                              isSubmitted && f.passwordConfirm.errors === null
+                          }"
+                          placeholder="Confirm Password"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          <span *ngIf="f.passwordConfirm.errors?.required">{{
+                            passwordRequire
+                          }}</span>
+                          <span *ngIf="f.passwordConfirm.errors?.pattern">{{
+                            passwordPattern
+                          }}</span>
+                          <span *ngIf="f.passwordConfirm.errors?.minlength">{{
+                            passwordMinLenght
+                          }}</span>
+                          <span *ngIf="f.passwordConfirm.errors?.mustMatch">{{
+                            passwordNotMatch
+                          }}</span>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input
+                            type="checkbox"
+                            id="agreement"
+                            formControlName="agreement"
+                            [ngClass]="{
+                              'form-check-input': true,
+                              'is-invalid':
+                                (f.agreement.touched || isSubmitted) &&
+                                f.agreement.errors,
+                              'is-valid':
+                                isSubmitted && f.agreement.errors === null
+                            }"
+                          />
+                          <label class="form-check-label" for="agreement">
+                            Agree to terms and conditions
+                          </label>
+                          <div class="invalid-feedback">
+                            You must agree before submitting.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button
+                          class="btn btn-primary"
+                          type="submit"
+                          
+                        >
+                          Sign Up
+                        </button>
+                      </div>
+
+                      <!-- SIGNLE SIGN IN -->
+                      <div class="col-12 px-5 text-center">
+                        <hr />
+                        Already a user?
+                        <a
+                          [routerLink]="['/signin']"
+                          class="text-decoration-none"
+                          >Sign In</a
+                        >
+                        <!-- <div class="btn-group" role="group">
                         <button type="button" class="btn btn-primary mx-2">Left</button>
                         <button type="button" class="btn btn-primary mx-2">Middle</button>
                         <button type="button" class="btn btn-primary mx-2">Right</button>
                       </div> -->
-                    </div>
-                  </form>
+                      </div>
 
-                    <!-- END Sign Up Form -->
+                      <!-- END Sign Up Form -->
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-12 col-lg-2"></div>
     </div>
-    <div class="col-md-12 col-lg-2"></div>
+  </div>
+
+
+  
+  <!-- Modal -->
+<!-- ! ADD NGCLASS d-none to make perfect -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
   </div>
 </div>
+
+</div>
+
+
+
