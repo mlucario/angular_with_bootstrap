@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
@@ -9,24 +9,21 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 // * LOADING
 import { LoadingComponent } from './components/commons/loading/loading.component';
 import { DashboardComponent } from './components/manager/dashboard/dashboard.component';
-import { ProfileComponent } from './components/account/profile/profile.component';
-import { SigninComponent } from './components/account/signin/signin.component';
-import { SignupComponent } from './components/account/signup/signup.component';
-import { SignOutComponent } from './components/account/sign-out/sign-out.component';
+import { AccountModule } from './components/account/account.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,    
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
     DashboardComponent,
-    ProfileComponent,
-    SigninComponent,
-    SignupComponent,
-    SignOutComponent
+    
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    AccountModule,
     AppRoutingModule
   ],
   providers: [],

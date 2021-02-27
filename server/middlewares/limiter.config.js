@@ -28,11 +28,11 @@ getIPLocation = rateLimit({
 // NOTE I will limit the account create on 1 IP (5 account in 1 hour)
 const createAccountLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour window
-    max: 2, // start blocking after 5 requests
+    max: 5, // start blocking after 5 requests
     message:
      {
          status: false,
-         message :  "Too many accounts created from this IP, please try again after an hour"
+         message :  "Too many request create account from this IP, please try again after an hour"
      }
   });
 

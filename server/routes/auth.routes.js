@@ -20,7 +20,7 @@ router.post(
     validatePassword,
     validateConfirmPassword,
     validateRoles,
-    limiter.createAccountLimiter
+    // limiter.createAccountLimiter
   ],
   signUp
 );
